@@ -19,8 +19,11 @@ int main()
     }
 
     // Execute some tests
+    double tol = 1e-10;
 
-    checkEdgesLength(mesh);
+    checkEdgesDimension(mesh, tol);
+
+    checkAreasDimension(mesh, tol);
 
     return 0;
 }

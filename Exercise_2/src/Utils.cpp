@@ -16,7 +16,7 @@ bool ImportMesh(const string& filepath,
     }
     else
     {
-        /*cout << "Cell0D marker:" << endl;
+        cout << "Cell0D marker:" << endl;
         for(auto it = mesh.Cell0DMarkers.begin(); it != mesh.Cell0DMarkers.end(); it++)
         {
             cout << "key:\t" << it -> first << "\t values:";
@@ -24,7 +24,7 @@ bool ImportMesh(const string& filepath,
                 cout << "\t" << id;
 
             cout << endl;
-        }*/
+        }
     }
 
     if(!ImportCell1Ds(filepath + "/Cell1Ds.csv",
@@ -34,7 +34,7 @@ bool ImportMesh(const string& filepath,
     }
     else
     {
-        /* cout << "Cell1D marker:" << endl;
+        cout << "Cell1D marker:" << endl;
         for(auto it = mesh.Cell1DMarkers.begin(); it != mesh.Cell1DMarkers.end(); it++)
         {
             cout << "key:\t" << it -> first << "\t values:";
@@ -42,7 +42,7 @@ bool ImportMesh(const string& filepath,
                 cout << "\t" << id;
 
             cout << endl;
-        }*/
+        }
     }
 
     if(!ImportCell2Ds(filepath + "/Cell2Ds.csv",
@@ -225,34 +225,20 @@ bool ImportCell2Ds(const string &filename,
         converter >> marker;
         converter >>  NumVertices;
 
-        //vertices.reserve(NumVertices);
+        vertices.resize(NumVertices);
 
         for(unsigned int i = 0; i < NumVertices; i++){
-            unsigned int tmp;
-            converter>>tmp;
-            vertices.push_back(tmp);
-            //converter >> vertices[i];
-            //cout << vertices[i] << endl;
+            converter >> vertices[i];
         }
 
-        cerr << vertices[0] << endl;
         converter >> NumEdges;
-        //edges.reserve(NumEdges);
+        edges.resize(NumEdges);
         for(unsigned int i = 0; i < NumEdges; i++){
-            unsigned int tmp;
-            converter>>tmp;
-            edges.push_back(tmp);
-            //converter >> edges[i];
+            converter >> edges[i];
         }
 
         mesh.Cell2DId.push_back(id);
-        mesh.Cell2DMarkers.insert({marker, {id}});
-        for(unsigned int i=0; i<mesh.NumberCell2D; i++){
-            for(unsigned int k=0;k<vertices.size();k++){
-                mesh.Cell2DVertices[i].push_back(vertices[k]);
-            }
-        }
-        //mesh.Cell2DVertices.push_back(vertices);
+        mesh.Cell2DVertices.push_back(vertices);
         mesh.Cell2DEdges.push_back(edges);
 
     }

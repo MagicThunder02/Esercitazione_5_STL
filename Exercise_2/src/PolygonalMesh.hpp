@@ -22,13 +22,15 @@ struct PolygonalMesh
 
     unsigned int NumberCell2D = 0; ///< number of Cell2D
     std::vector<unsigned int> Cell2DId = {}; ///< Cell2D id, size 1 x NumberCell2D
-    std::vector<std::vector<unsigned int>> Cell2DVertices; ///< Cell2D Vertices indices, size 1 x NumberCell2DVertices[NumberCell2D]
-    std::vector<std::vector<unsigned int>> Cell2DEdges; ///< Cell2D Cell1D indices, size 1 x NumberCell2DEdges[NumberCell2D]
-    std::map<unsigned int, list<unsigned int>> Cell2DMarkers = {}; ///< Cell2D propertoes, size 1 x NumberCell2D (marker)
+    std::vector<std::vector<unsigned int>> Cell2DVertices = {}; ///< Cell2D Vertices indices, size 1 x NumberCell2DVertices[NumberCell2D]
+    std::vector<std::vector<unsigned int>> Cell2DEdges = {}; ///< Cell2D Cell1D indices, size 1 x NumberCell2DEdges[NumberCell2D]
+    std::map<unsigned int, list<unsigned int>> Cell2DMarkers = {};  ///< Cell2D propertoes, size 1 x NumberCell2D (marker)
 };
 
 // TESTS
 
-bool checkEdgesLength(PolygonalMesh& mesh);
+void checkEdgesDimension(PolygonalMesh& mesh, double tol);
+
+void checkAreasDimension(PolygonalMesh& mesh, double tol);
 
 }
