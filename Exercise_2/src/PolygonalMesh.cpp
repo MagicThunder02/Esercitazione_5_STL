@@ -36,6 +36,9 @@ namespace PolygonalLibrary {
     }
 
     void checkAreasDimension(PolygonalMesh& mesh, double tol) {
+        // la tolleranza deve essere in proporzione a quella dell'area di un triangolo
+        tol = max(pow(tol,2)*sqrt(3)/4, tol);
+
         for (unsigned int p = 0; p < mesh.NumberCell2D; p++)
         {
 

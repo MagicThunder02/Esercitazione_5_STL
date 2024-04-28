@@ -8,6 +8,13 @@ using namespace PolygonalLibrary;
 
 int main()
 {
+    // setto la tolleranza dall'utente oppure uso la epsilon di macchina
+    double tol;
+    cout << "Inserire tolleranza per il controllo sugli errori: "<< endl;
+    cin >> tol;
+    double  tol2 = max(10*numeric_limits<double>::epsilon(), tol);
+    cout << "Tolleranza: "<< tol2 << endl;
+
     PolygonalMesh mesh;
 
     string filepath = "PolygonalMesh";
@@ -19,8 +26,6 @@ int main()
     }
 
     // Execute some tests
-    double tol = 1e-10;
-
     checkEdgesDimension(mesh, tol);
 
     checkAreasDimension(mesh, tol);
