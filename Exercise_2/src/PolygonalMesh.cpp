@@ -61,6 +61,16 @@ namespace PolygonalLibrary {
 
                 area += x*nextY + nextX*y;
             }
+            unsigned int pointIndex = vertices[verticesNumber-1];
+            unsigned int nextPointIndex = vertices[0];
+
+            double x = mesh.Cell0DCoordinates[pointIndex][0];
+            double y = mesh.Cell0DCoordinates[pointIndex][1];
+
+            double nextX = mesh.Cell0DCoordinates[nextPointIndex][0];
+            double nextY = mesh.Cell0DCoordinates[nextPointIndex][1];
+
+            area += x*nextY + nextX*y;
 
             area = area / 2;
             // cout << area << endl;
