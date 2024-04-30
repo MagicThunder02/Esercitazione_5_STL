@@ -59,7 +59,7 @@ namespace PolygonalLibrary {
                 double nextX = mesh.Cell0DCoordinates[nextPointIndex][0];
                 double nextY = mesh.Cell0DCoordinates[nextPointIndex][1];
 
-                area += x*nextY + nextX*y;
+                area += x*nextY - nextX*y;
             }
             unsigned int pointIndex = vertices[verticesNumber-1];
             unsigned int nextPointIndex = vertices[0];
@@ -70,7 +70,7 @@ namespace PolygonalLibrary {
             double nextX = mesh.Cell0DCoordinates[nextPointIndex][0];
             double nextY = mesh.Cell0DCoordinates[nextPointIndex][1];
 
-            area += x*nextY + nextX*y;
+            area += x*nextY - nextX*y;
 
             area = abs(area / 2);
             // cout << area << endl;
