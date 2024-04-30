@@ -72,7 +72,7 @@ namespace PolygonalLibrary {
 
             area += x*nextY + nextX*y;
 
-            area = area / 2;
+            area = abs(area / 2);
             // cout << area << endl;
 
             if (area < tol) {
